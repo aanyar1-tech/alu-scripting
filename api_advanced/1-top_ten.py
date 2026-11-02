@@ -17,7 +17,9 @@ def top_ten(subreddit):
     headers = {"User-Agent": "linux:alu-scripting:v1.0 (by /u/aanyar1)"}
 
     try:
-        response = requests.get(url, headers=headers, allow_redirects=False)
+        response = requests.get(
+            url, headers=headers, allow_redirects=False
+        )
         if response.status_code != 200:
             print(None)
             return
