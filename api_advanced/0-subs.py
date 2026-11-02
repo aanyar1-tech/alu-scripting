@@ -10,7 +10,7 @@ import requests
 def number_of_subscribers(subreddit):
     """Returns the total number of subscribers for a given subreddit."""
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": "alu-scripting:v1.0 (by /u/aanyar1)"}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
     response = requests.get(url, headers=headers, allow_redirects=False)
 
