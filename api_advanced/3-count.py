@@ -7,7 +7,8 @@ hot articles, and prints a sorted count of given keywords.
 import requests
 
 
-def count_words(subreddit, word_list, instances=None, word_counts=None, after=None):
+def count_words(subreddit, word_list, instances=None,
+                word_counts=None, after=None):
     """Recursively queries Reddit API and counts occurrences of keywords."""
     if word_counts is None:
         word_counts = {}
