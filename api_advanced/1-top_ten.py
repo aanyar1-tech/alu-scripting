@@ -20,16 +20,17 @@ def top_ten(subreddit):
     headers = {'User-Agent': 'alu-scripting-user-agent'}
     response = requests.get(url, headers=headers, allow_redirects=False)
 
-    if response.status_code == 200:
-        try:
-            data = response.json().get('data', {})
-            posts = data.get('children', [])
-            if not posts:
-                print(None)
-                return
-            for post in posts:
-                print(post.get('data', {}).get('title'))
-        except ValueError:
+    if response.status_code != 200:
+        print(None)
+        return
+
+    try:
+        data = response.json().get('data', {})
+        posts = data.get('children', [])
+        if not posts:
             print(None)
-    else:
-      print(None)
+            return
+        for post in posts:
+            print(post.get('data', {}).get('title'))
+    except ValueError:
+        print(None)
