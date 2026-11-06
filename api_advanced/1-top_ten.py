@@ -17,8 +17,8 @@ def top_ten(subreddit):
         return
 
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
-    headers = {'User-Agent': 'alu-scripting-bot/1.0'}
-    
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+
     try:
         response = requests.get(
             url, headers=headers, allow_redirects=False, timeout=10
