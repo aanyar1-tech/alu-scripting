@@ -2,6 +2,8 @@
 """Queries Reddit API and prints top 10 hot posts"""
 import requests
 
+:
+
 def top_ten(subreddit):
     """Prints titles of first 10 hot posts"""
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
