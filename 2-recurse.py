@@ -7,12 +7,14 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after="", count=0):
-    """Recursively returns a list containing the titles of all hot articles."""
+    """Recursively returns a list containing titles of all hot articles."""
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     headers = {"User-Agent": "linux:alu.api.advanced:v1.0.0"}
     params = {"after": after, "count": count, "limit": 100}
 
-    response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+    response = requests.get(
+        url, headers=headers, params=params, allow_redirects=False
+    )
     if response.status_code != 200:
         return None
 
