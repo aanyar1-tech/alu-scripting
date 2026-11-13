@@ -16,19 +16,21 @@ def top_ten(subreddit):
         return
 
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+    headers = {'User-Agent': 'linux:alu-scripting:v1.0'}
 
     try:
-        # Allow redirects=True or handle specific status codes if checker expects it
-        response = requests.get(url, headers=headers, allow_redirects=True, timeout=10)
-        
+        response = requests.get(
+            url,
+            headers=headers,
+            allow_redirects=False,
+            timeout=10
+        )
         if response.status_code != 200:
             print(None)
             return
 
         data = response.json()
         children = data.get('data', {}).get('children', [])
-        
         if not children:
             print(None)
             return
