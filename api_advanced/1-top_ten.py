@@ -16,7 +16,7 @@ def top_ten(subreddit):
         return
 
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-Agent': 'Mozilla/5.0 (compatible; ALU-ScriptingBot/1.0)'}
+    headers = {'User-Agent': 'alu-scripting:v1.0'}
 
     try:
         response = requests.get(
@@ -30,6 +30,10 @@ def top_ten(subreddit):
             return
 
         data = response.json()
+        if 'data' not in data or 'children' not in data.get('data', {}):
+            print(None)
+            return
+
         children = data.get('data', {}).get('children', [])
         if not children:
             print(None)
