@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """
-1-top_ten module
+Module to query the Reddit API and print the top 10 hot posts for a subreddit.
 """
-
 import requests
 
 
@@ -16,7 +15,7 @@ def top_ten(subreddit):
         return
 
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-Agent': 'alu-scripting:v1.0'}
+    headers = {'User-Agent': 'python:alu-scripting:v1.0 (by /u/aanyar1-tech)'}
 
     try:
         response = requests.get(
@@ -25,23 +24,24 @@ def top_ten(subreddit):
             allow_redirects=False,
             timeout=10
         )
+
         if response.status_code != 200:
             print(None)
             return
 
         data = response.json()
-        if 'data' not in data or 'children' not in data.get('data', {}):
-            print(None)
-            return
+        data_dict = data.get('data', {})
+        children = data_dict.get('children', [])
 
-        children = data.get('data', {}).get('children', [])
         if not children:
             print(None)
             return
 
         for i in range(min(10, len(children))):
-            title = children[i].get('data', {}).get('title')
+            post_data = children[i].get('data', {})
+            title = post_data.get('title')
             if title:
                 print(title)
+
     except Exception:
         print(None)
