@@ -17,7 +17,6 @@ def top_ten(subreddit):
     try:
         response = requests.get(url, headers=headers, allow_redirects=False, timeout=10)
         
-        # If the subreddit is invalid, Reddit returns a redirect (302/301) or error status
         if response.status_code != 200:
             print(None)
             return
